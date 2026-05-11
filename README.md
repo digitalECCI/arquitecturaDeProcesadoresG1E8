@@ -1,1 +1,5 @@
-# picoSoC_simple
+# PicoSoC Simple
+________________________________
+
+
+PicoSoC para Max10.
