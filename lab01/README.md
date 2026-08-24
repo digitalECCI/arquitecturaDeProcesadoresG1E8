@@ -4,7 +4,7 @@
 # Integrantes
     * [<!-- EDWIN ALBEIRO BLANCO. -->](<!-- Remplace aqui link de usario 1 de github -->) 
     * [<!-- CRISTIAN DAVID MALDONADO. -->](<!-- Remplace aqui link de usario 2 de github -->) 
-    * [<!-- ANDERSON STIVEN MALAGON. -->](<!-- Remplace aqui link de usario 3 de github -->) 
+    * [<!-- ANDERSON STIVEN MALAGON. -->](https://github.com/andersonstmalagonal-svg) 
 # Informe
 
 Indice:
