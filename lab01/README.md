@@ -10,11 +10,11 @@
 Indice:
 
 1. [Documentación](#documentación-de-los-circuitos-implementados-implementado)
-2. [Simulaciones](#simulaciones)
-3. [Evidencias de implementación](#evidencias-de-implementación)
-4. [Preguntas](#preguntas)
-5. [Conclusiones](#conclusiones)
-6. [Referencias](#referencias)
+3. [Simulaciones](#simulaciones)
+4. [Evidencias de implementación](#evidencias-de-implementación)
+5. [Preguntas](#preguntas)
+6. [Conclusiones](#conclusiones)
+7. [Referencias](#referencias)
 
 ## Documentación del diseño implementado
 
