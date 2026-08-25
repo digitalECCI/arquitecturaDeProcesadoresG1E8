@@ -25,6 +25,7 @@ Indice:
 
 - Modo Resta ($Sel = 1$): Al establecer la señal de control en un estado lógico alto, las compuertas XOR actúan como inversores, entregando a los sumadores el complemento a 1 del operando $B$ ($\bar{B}$). Simultáneamente, este estado lógico alto ingresa como un 1 en el acarreo de entrada inicial del circuito. Esta suma de una unidad al valor invertido completa matemáticamente el complemento a 2. En consecuencia, el hardware procesa la operación $S = A + \bar{B} + 1$, lo cual equivale aritméticamente a la sustracción $S = A - B$.
 #### 1.2 Diagramas
+<img width="671" height="310" alt="image" src="https://github.com/user-attachments/assets/5295b0d7-7aa8-499e-afce-20f5469a4451" />
 
 
 ## Simulaciones 
