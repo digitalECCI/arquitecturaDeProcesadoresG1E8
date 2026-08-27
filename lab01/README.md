@@ -10,6 +10,9 @@
 Indice:
 
 1. [Documentación](#documentación-de-los-circuitos-implementados-implementado)
+   1.1 [sumador_1_bit](#sumador_1_bit)
+   1.2 [sumador_4_bit](#sumador_4_bits)
+   1.3 [sumador_restador_4_bits](#Sumador/Restador)
 3. [Simulaciones](#simulaciones)
 5. [Evidencias de implementación](#evidencias-de-implementación)
 6. [Preguntas](#preguntas)
@@ -63,7 +66,7 @@ Las expresiones lógicas simplificadas para las salidas son las siguientes:
 
 
   
-### 1.1 sumador_4_bits
+### 1.2 sumador_4_bits
 
 
 # Sumador de 4 Bits (Ripple Carry Adder)
@@ -98,19 +101,6 @@ El circuito interconecta cuatro módulos **Sumadores Completo de 1 bit** ($FA_0,
 
 ---
 
-## Ecuaciones Lógicas Generales
-
-Para cada etapa $i$ (donde $i = 0, 1, 2, 3$):
-
-* **Suma por Bit:** 
-  $$S_i = A_i \oplus B_i \oplus C_i$$
-
-* **Acarreo Siguiente:** 
-  $$C_{i+1} = (A_i \cdot B_i) + (C_i \cdot (A_i \oplus B_i))$$
-
-*(Donde $C_0 = C_{in}$ y $C_4 = C_{out}$)*
-
----
 
 ## Ejemplos de Funcionamiento Aritmético
 
@@ -126,20 +116,79 @@ Para cada etapa $i$ (donde $i = 0, 1, 2, 3$):
   * $C_{in} = 0$
   * **Resultado:** $S = 0001_2$ (1 en decimal), $C_{out} = 1$ *(Suma total = 17)*
 
----
-
-## Diagrama del Circuito 
 
 
+## Codigo Implementado
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 1.2 Sumador/Restador
-1. Sumador/Restador1.1 DescripciónEl circuito sumador/restador de 4 bits implementado es un sistema lógico combinacional diseñado para realizar operaciones aritméticas de adición y sustracción binaria sobre dos operandos de 4 bits ($A_3A_2A_1A_0$ y $B_3B_2B_1B_0$). La selección de la operación aritmética a ejecutar se define mediante una única señal de control o modo ($M$).La arquitectura del sistema se fundamenta en la interconexión en cascada de cuatro sumadores completos. Para lograr la dualidad de la operación utilizando el mismo bloque sumador, el circuito emplea la aritmética del complemento a 2. Mientras el operando $A$ ingresa directamente a las terminales de los sumadores, cada bit del operando $B$ pasa previamente por una compuerta lógica XOR, compartiendo la segunda entrada de la compuerta con la señal de control $M$. A su vez, esta línea de control $M$ se conecta directamente al acarreo de entrada inicial ($C_{in}$) del bit menos significativo.
-#### 1.1 Descripción
-- Modo Suma ($Sel = 0$): Al establecer la señal de control en un estado lógico bajo, las compuertas XOR actúan como adaptadores transparentes, permitiendo el paso de los bits del operando $B$ sin alteraciones lógicas ($B \oplus 0 = B$). Dado que el acarreo de entrada inicial es 0, la topología en cascada ejecuta una adición binaria estándar: $S = A + B$.
+# Sumador-Restador de 4 Bits
 
-- Modo Resta ($Sel = 1$): Al establecer la señal de control en un estado lógico alto, las compuertas XOR actúan como inversores, entregando a los sumadores el complemento a 1 del operando $B$ ($\bar{B}$). Simultáneamente, este estado lógico alto ingresa como un 1 en el acarreo de entrada inicial del circuito. Esta suma de una unidad al valor invertido completa matemáticamente el complemento a 2. En consecuencia, el hardware procesa la operación $S = A + \bar{B} + 1$, lo cual equivale aritméticamente a la sustracción $S = A - B$.
-#### 1.2 Diagramas
-<img width="671" height="310" alt="image" src="https://github.com/user-attachments/assets/5295b0d7-7aa8-499e-afce-20f5469a4451" />
+## Descripción General
+Un **Sumador-Restador de 4 Bits** es un circuito combinacional versátil capaz de realizar tanto sumas como restas aritméticas en sistema binario de complemento a dos. El modo de operación se selecciona mediante una señal de control ($Op$).
+
+El circuito utiliza la misma estructura base de un sumador de 4 bits mediante el uso de compuertas **XOR** en las entradas del segundo operando ($B$), lo que permite invertir sus bits cuando se requiere una operación de resta.
+
+---
+
+## Interfaz de Entradas y Salidas
+
+| Puerto | Ancho de Bits | Tipo | Descripción |
+| :---: | :---: | :---: | :--- |
+| `A` | 4 bits ($A_3..A_0$) | Entrada | Primer operando (Minuendo / Augendo). |
+| `B` | 4 bits ($B_3..B_0$) | Entrada | Segundo operando (Sustraendo / Sumando). |
+| `Op` | 1 bit | Entrada | Selector de operación (`0` = Suma, `1` = Resta). |
+| `Result` | 4 bits ($R_3..R_0$) | Salida | Resultado de la operación ($A + B$ o $A - B$). |
+| `Cout` | 1 bit | Salida | Acarreo de salida o préstamo según la operación. |
+
+---
+
+## Principio de Funcionamiento
+
+El circuito se apoya en las propiedades de la compuerta **XOR** como inversor controlado:
+
+1. **Modo Suma ($Op = 0$):**
+   * Cada bit $B_i \oplus 0 = B_i$ (el valor de $B$ no cambia).
+   * El acarreo inicial de entrada es $C_{in} = 0$.
+   * La operación ejecutada es: $\text{Result} = A + B$.
+
+2. **Modo Resta ($Op = 1$):**
+   * Cada bit $B_i \oplus 1 = \overline{B_i}$ (se invierten todos los bits de $B$, obteniendo el complemento a 1).
+   * El acarreo inicial de entrada es $C_{in} = 1$ (sumando este $1$ se completa el **complemento a 2**).
+   * La operación ejecutada es: $\text{Result} = A + \overline{B} + 1 = A - B$.
+
+---
+
+## Estructura Interna por Etapa
+
+Para cada bit $i$ (donde $i = 0, 1, 2, 3$):
+
+* **Entrada Modificada:** $B'_i = B_i \oplus Op$
+* **Suma / Resta por Bit:** $R_i = A_i \oplus B'_i \oplus C_i$
+* **Acarreo Siguiente:** $C_{i+1} = (A_i \cdot B'_i) + (C_i \cdot (A_i \oplus B'_i))$
+
+*(Nota: $C_0 = Op$)*
+
+---
+
+## Ejemplos de Funcionamiento
+
+* **Ejemplo 1: Suma ($Op = 0$)**
+  * $A = 0110_2$ (6 en decimal)
+  * $B = 0011_2$ (3 en decimal)
+  * **Resultado:** $\text{Result} = 1001_2$ (9 en decimal), $C_{out} = 0$
+
+* **Ejemplo 2: Resta ($Op = 1$)**
+  * $A = 0111_2$ (7 en decimal)
+  * $B = 0010_2$ (2 en decimal)
+  * **Resultado:** $\text{Result} = 0101_2$ (5 en decimal), $C_{out} = 1$
+
+---
+
+## Diagrama del Circuito
+
+![Diagrama del Sumador Restador](./fig/sumador_restador_esquema.png)
 
 
 ## Simulaciones 
