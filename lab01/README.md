@@ -33,7 +33,7 @@ Indice:
 ### 1. Simulación del sumador/restador
 
 #### 1.1 Descripción
-* [Restador de 4 bits](.lab01./fig/Restador_4_bits)
+* [Restador de 4 bits](.lab01./src/Restador_4_bits)
 * [Testbench del Restador](./Restador_4_bits_testbench)
 * [Sumador de 1 bit](./Sumador_1_bit).
 #### 1.2 Diagrama
