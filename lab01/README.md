@@ -11,10 +11,11 @@ Indice:
 
 1. [Documentación](#documentación-de-los-circuitos-implementados-implementado)
 3. [Simulaciones](#simulaciones)
-4. [Evidencias de implementación](#evidencias-de-implementación)
-5. [Preguntas](#preguntas)
-6. [Conclusiones](#conclusiones)
-7. [Referencias](#referencias)
+   3.1 
+5. [Evidencias de implementación](#evidencias-de-implementación)
+6. [Preguntas](#preguntas)
+7. [Conclusiones](#conclusiones)
+9. [Referencias](#referencias)
 
 ## Documentación del diseño implementado
 
@@ -32,10 +33,11 @@ Indice:
 
 ### 1. Simulación del sumador/restador
 
-#### 1.1 Descripción
+#### 1.1 Descripción del código
+        ### 1.1.1 retador de 4 bits ###
 * [Restador de 4 bits](./src/Restador_4_bits)
-* [Testbench del Restador](./Restador_4_bits_testbench)
-* [Sumador de 1 bit](./Sumador_1_bit).
+* [Testbench del Restador](.src/Restador_4_bits_testbench)
+* [Sumador de 1 bit](.src/Sumador_1_bit).
 #### 1.2 Diagrama
 
 
