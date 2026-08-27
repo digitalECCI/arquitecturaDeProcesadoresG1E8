@@ -194,16 +194,12 @@ Para cada bit $i$ (donde $i = 0, 1, 2, 3$):
 
 --------------------------------------------------------------------------------------------------
 ## Simulaciones 
+### sumador_4_bits
+* [test_sumador](./fig/restador.png)
 
-### 1. Simulación del sumador/restador
-
-#### 1.1 Descripción del código
-        ### 1.1.1 retador de 4 bits ###
-
-* [Testbench del Restador](.src/Restador_4_bits_testbench)
-
-#### 1.2 Diagrama
-
+### restador_4_bits 
+* [test_sumador](./fig/sumador.png)
+-------------------------------------------------------------------
 
 ## Evidencias de implementación
 
