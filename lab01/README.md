@@ -64,8 +64,11 @@ Las expresiones lógicas simplificadas para las salidas son las siguientes:
 * **Acarreo de salida ($C_{out}$):**
   $$C_{out} = (A \cdot B) + (C_{in} \cdot (A \oplus B))$$
 
+### Código Implementado 
+* [Sumador de 1 bit](.src/Sumador_1_bit).
 
-  
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------
 ### 1.2 sumador_4_bits
 
 
@@ -119,7 +122,7 @@ El circuito interconecta cuatro módulos **Sumadores Completo de 1 bit** ($FA_0,
 
 
 ## Codigo Implementado
-
+* [Restador de 4 bits](./src/Sumador_4_bits)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 1.2 Sumador/Restador
@@ -186,20 +189,19 @@ Para cada bit $i$ (donde $i = 0, 1, 2, 3$):
 
 ---
 
-## Diagrama del Circuito
+## Código Implementado 
+* [Restador de 4 bits](./src/Restador_4_bits)
 
-![Diagrama del Sumador Restador](./fig/sumador_restador_esquema.png)
-
-
+--------------------------------------------------------------------------------------------------
 ## Simulaciones 
 
 ### 1. Simulación del sumador/restador
 
 #### 1.1 Descripción del código
         ### 1.1.1 retador de 4 bits ###
-* [Restador de 4 bits](./src/Restador_4_bits)
+
 * [Testbench del Restador](.src/Restador_4_bits_testbench)
-* [Sumador de 1 bit](.src/Sumador_1_bit).
+
 #### 1.2 Diagrama
 
 
