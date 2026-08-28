@@ -195,7 +195,7 @@ Para cada bit $i$ (donde $i = 0, 1, 2, 3$):
 --------------------------------------------------------------------------------------------------
 ## Simulaciones 
 ### sumador_4_bits
-* [test_sumador](./fig/restador.png)
+* ![test_sumador](./fig/restador.png)
 
 ### restador_4_bits 
 * [test_sumador](./fig/sumador.png)
