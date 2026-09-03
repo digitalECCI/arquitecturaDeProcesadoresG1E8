@@ -190,6 +190,9 @@ Para cada bit $i$ (donde $i = 0, 1, 2, 3$):
 ---
 
 ## Código Implementado 
+
+Simulación en GTKWave del módulo sumador. Se observa cómo la señal de salida S_su[3:0] realiza la suma en hexadecimal de los operandos A_su[3:0] y B_su[3:0]. Por ejemplo, cuando A_su cambia a 8 y B_su incrementa consecutivamente desde 0 hasta F, el resultado S_su responde dinámicamente de forma correcta (8 + 0 = 8, 8 + 1 = 9, 8 + 2 = A, etc.).
+
 * [Restador de 4 bits](./src/Restador_4_bits)
 
 --------------------------------------------------------------------------------------------------
