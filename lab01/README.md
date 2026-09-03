@@ -70,9 +70,6 @@ Las expresiones lógicas simplificadas para las salidas son las siguientes:
 
 
   -----------------------------------------------------------------------------------------------------------------------------------------------
-# 1.2 sumador_4_bits
-
-
 ## Sumador de 4 Bits (Ripple Carry Adder)
 
 ## Descripción General
@@ -127,7 +124,7 @@ El circuito interconecta cuatro módulos **Sumadores Completo de 1 bit** ($FA_0,
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # 1.2 Sumador/Restador
-# Sumador-Restador de 4 Bits
+Sumador-Restador de 4 Bit
 
 ## Descripción General
 Un **Sumador-Restador de 4 Bits** es un circuito combinacional versátil capaz de realizar tanto sumas como restas aritméticas en sistema binario de complemento a dos. El modo de operación se selecciona mediante una señal de control ($Op$).
