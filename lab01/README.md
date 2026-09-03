@@ -10,14 +10,15 @@
 Indice:
 
 1. [Documentación](#documentación-de-los-circuitos-implementados-implementado)
-   1.1 [sumador_1_bit](#sumador_1_bit)
-   1.2 [sumador_4_bit](#sumador_4_bits)
-   1.3 [sumador_restador_4_bits](#Sumador/Restador)
-3. [Simulaciones](#simulaciones)
-5. [Evidencias de implementación](#evidencias-de-implementación)
-6. [Preguntas](#preguntas)
-7. [Conclusiones](#conclusiones)
-9. [Referencias](#referencias)
+   - [sumador_1_bit](#sumador_1_bit)
+   - [sumador_4_bit](#sumador_4_bits)
+   - [sumador_restador_4_bits](#Sumador/Restador)
+2. [Simulaciones](#simulaciones)
+3. [Evidencias de implementación](#evidencias-de-implementación)
+4. [Preguntas](#preguntas)
+5. [Conclusiones](#conclusiones)
+6. [Referencias](#referencias)
+
 
 ## 1 Documentación del diseño implementado
 ### 1. sumador_1_bit
