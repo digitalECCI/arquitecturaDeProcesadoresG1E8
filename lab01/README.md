@@ -198,7 +198,8 @@ Para cada bit $i$ (donde $i = 0, 1, 2, 3$):
 * ![test_sumador](./fig/restador.png)
 
 ### restador_4_bits 
-* [test_sumador](./fig/sumador.png)
+*
+* ![test_sumador](./fig/sumador.png)
 -------------------------------------------------------------------
 
 ## Evidencias de implementación
