@@ -198,9 +198,14 @@ Simulación en GTKWave del módulo sumador. Se observa cómo la señal de salida
 --------------------------------------------------------------------------------------------------
 ## Simulaciones 
 ### sumador_4_bits
+
+Simulación en GTKWave del módulo sumador. Se observa cómo la señal de salida S_su[3:0] realiza la suma en hexadecimal de los operandos A_su[3:0] y B_su[3:0]. Por ejemplo, cuando A_su cambia a 8 y B_su incrementa consecutivamente desde 0 hasta F, el resultado S_su responde dinámicamente de forma correcta (8 + 0 = 8, 8 + 1 = 9, 8 + 2 = A, etc.).
+
 * ![test_sumador](./fig/sumador.png)
 
 ### restador_4_bits 
+
+Simulación en GTKWave del circuito sumador/restador. Se observa la señal de control sel, la cual conmuta la operación realizada sobre los operandos A_su[3:0] y B_su[3:0]. Al cambiar el estado de sel, la salida S_su[3:0] pasa dinámicamente de entregar la suma ($A + B$) a entregar la resta en complemento a dos ($A - B$), validando la lógica del módulo.
 * ![test_sumador](./fig/restador.png)
 -------------------------------------------------------------------
 
