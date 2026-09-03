@@ -122,7 +122,7 @@ El circuito interconecta cuatro módulos **Sumadores Completo de 1 bit** ($FA_0,
 
 
 ## Codigo Implementado
-* [Restador de 4 bits](./src/sumador_4_bits)
+* [Sumador de 4 bits](./src/sumador_4_bits)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 1.2 Sumador/Restador
