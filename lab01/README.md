@@ -65,7 +65,7 @@ Las expresiones lógicas simplificadas para las salidas son las siguientes:
   $$C_{out} = (A \cdot B) + (C_{in} \cdot (A \oplus B))$$
 
 ### Código Implementado 
-* [Sumador de 1 bit](.src/Sumador_1_bit).
+* [Sumador de 1 bit](./src/Sumador_1_bit).
 
 
   -----------------------------------------------------------------------------------------------------------------------------------------------
