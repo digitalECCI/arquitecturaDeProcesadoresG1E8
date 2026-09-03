@@ -202,8 +202,9 @@ Para cada bit $i$ (donde $i = 0, 1, 2, 3$):
 * ![test_sumador](./fig/sumador.png)
 -------------------------------------------------------------------
 
-## Evidencias de implementación
-
+## Evidencias de implementaciónEn 
+el siguiente video podemos ver el sumador y el restador trabajando juntos. Mediante un pulsador cambiamos entre la suma y la resta, mientras que con unos conmutadores (switches) ajustamos la entrada de 4 bits, tanto para la entrada A como para la B. La salida se muestra en formato binario mediante LEDs
+https://youtube.com/shorts/MP581d7l8P0?si=btuJHzmaOGTZkvLG
 
 ## Conclusiones
 
