@@ -213,6 +213,9 @@ https://youtube.com/shorts/MP581d7l8P0?si=btuJHzmaOGTZkvLG
 
 ## Conclusiones
 
+* **Verificación de la arquitectura combinacional:** Se logró validar el correcto funcionamiento del sumador completo de 1 bit y su posterior escalamiento a 4 bits, comprobando cómo la propagación del acarreo (*carry*) influye directamente en el resultado de la operación aritmética.
+* **Integración del circuito Sumador/Restador:** Mediante el uso del complemento a dos y compuertas XOR controladas por la señal de selección (`sel`), se simplificó el diseño del circuito al compartir el mismo bloque aritmético básico tanto para sumar como para restar, reduciendo la complejidad del hardware necesario.
+* **Validación mediante simulación y hardware real:** La simulación temporal en GTKWave permitió verificar las formas de onda de cada entrada y salida antes de la implementación, mientras que las pruebas físicas con pulsadores, switches y LEDs en la tarjeta confirmaron la correcta respuesta del diseño en un entorno práctico.
 
 ## Referencias
 
