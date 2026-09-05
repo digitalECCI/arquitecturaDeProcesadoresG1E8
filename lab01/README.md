@@ -2,9 +2,9 @@
 # Lab01 - Sumador/Restador de 4 bits
 
 # Integrantes
-    * [<!-- EDWIN ALBEIRO BLANCO. -->](<!-- Remplace aqui link de usario 1 de github -->) 
+    * [<!-- EDWIN ALBEIRO BLANCO.     -->](https://github.com/Edwinal05)
     * [<!-- CRISTIAN DAVID MALDONADO. -->](https://github.com/CristianMaldonadoTinjaca) 
-    * [<!-- ANDERSON STIVEN MALAGON. -->](https://github.com/andersonstmalagonal-svg) 
+    * [<!-- ANDERSON STIVEN MALAGON.  -->](https://github.com/andersonstmalagonal-svg) 
 # Informe
 
 Indice:
