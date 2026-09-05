@@ -6,7 +6,7 @@ Arquitectura de Procesadores - Grupo 1 Equipo 8
 Este es el repositorio número 8 del la asignatura Arquitectura de Procesadores.
 
 ## Integrantes
-    * [<!-- Remplace aqui nombre 1. -->](<!-- Remplace aqui link de usario 1 de github -->) 
-    * [<!-- Remplace aqui nombre 2. -->](<!-- Remplace aqui link de usario 2 de github -->) 
-    * [<!-- Remplace aqui nombre 3. -->](<!-- Remplace aqui link de usario 3 de github -->) 
+    * [<!-- EDWIN ALBEIRO BLANCO.     -->](https://github.com/Edwinal05)
+    * [<!-- CRISTIAN DAVID MALDONADO. -->](https://github.com/CristianMaldonadoTinjaca) 
+    * [<!-- ANDERSON STIVEN MALAGON.  -->](https://github.com/andersonstmalagonal-svg) 
 
