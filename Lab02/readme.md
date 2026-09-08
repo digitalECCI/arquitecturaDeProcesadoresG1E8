@@ -1,4 +1,4 @@
-# 🛠️ Descripción Detallada del Diseño de Hardware
+#  Descripción Detallada del Diseño de Hardware
 
 El sistema implementado en la FPGA se estructura mediante una arquitectura modular jerárquica. Este enfoque divide el problema en tres etapas fundamentales: la **unidad de procesamiento aritmético**, el **bloque de conversión de código (Double Dabble)** y la **etapa de decodificación y visualización dinámica**.
 
