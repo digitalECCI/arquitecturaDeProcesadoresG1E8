@@ -77,7 +77,8 @@ Mediante un contador de 2 bits alimentado por un reloj de refresco (aprox. 60Hz 
 
 
 ## 4.Imágenes de la simulación 
+Lo que vemos a continuación es el hecho de tener dos entradas de 4 bits para generar la suma o la resta, respectivamente, que en este caso son A_do y B_do. Co_do sería el acarreo de salida. En des se guarda el valor de la operación matemática correspondiente a las decenas, y en uni el valor correspondiente a las unidades. mita es un registro de 13 bits que me permite crear un número que sirve para realizar la operación de "double dabble" (correr un bit y luego sumarle 3 cuando sea mayor a 4), para después asignarle a cada grupo de 4 bits las cantidades de decenas y unidades, respectivamente.
 
+<img width="1262" height="712" alt="image" src="https://github.com/user-attachments/assets/f92cba8e-9ff9-4482-840d-81459d18ffe9" />
 
-![test_simulacion](./Lab02/fig/prueba.md)
 
