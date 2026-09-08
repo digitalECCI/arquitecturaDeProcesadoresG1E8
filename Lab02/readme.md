@@ -1,6 +1,6 @@
 #  Descripción Detallada del Diseño de Hardware
 
-El sistema implementado en la FPGA se estructura mediante una arquitectura modular jerárquica. Este enfoque divide el problema en tres etapas fundamentales: la **unidad de procesamiento aritmético**, el **bloque de conversión de código (Double Dabble)** y la **etapa de decodificación y visualización dinámica**.
+Para que todo funcione de manera ordenada en la FPGA, el sistema se diseñó por módulos. Básicamente, dividimos el proyecto en tres partes clave: primero se procesan los números en la unidad aritmética, después pasamos los datos por el bloque Double Dabble para hacer la conversión de código, y por último entra en juego la etapa de decodificación para mostrar la información en la pantalla de forma dinámica.
 
 ---
 
@@ -73,3 +73,10 @@ Mediante un contador de 2 bits alimentado por un reloj de refresco (aprox. 60Hz 
 | `01` | **Display 2** (Centro) | `BCD_Decenas` | Dígito de las decenas (ej. '1'). |
 | `10` | **Display 3** (Derecha) | `BCD_Unidades` | Dígito de las unidades (ej. '4'). |
 | `11` | Ninguno (Reset/Espera) | `0000` | Display apagado para evitar "fantasmas". |
+
+
+
+### Imágenes de la simulación 
+
+
+
