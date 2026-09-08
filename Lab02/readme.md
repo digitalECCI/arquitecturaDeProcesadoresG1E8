@@ -76,7 +76,7 @@ Mediante un contador de 2 bits alimentado por un reloj de refresco (aprox. 60Hz 
 
 
 
-### Imágenes de la simulación 
+## 4.Imágenes de la simulación 
 
 
 
