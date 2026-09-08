@@ -77,8 +77,31 @@ Mediante un contador de 2 bits alimentado por un reloj de refresco (aprox. 60Hz 
 
 
 ## 4.Imágenes de la simulación 
-Lo que vemos a continuación es el hecho de tener dos entradas de 4 bits para generar la suma o la resta, respectivamente, que en este caso son A_do y B_do. Co_do sería el acarreo de salida. En des se guarda el valor de la operación matemática correspondiente a las decenas, y en uni el valor correspondiente a las unidades. mita es un registro de 13 bits que me permite crear un número que sirve para realizar la operación de "double dabble" (correr un bit y luego sumarle 3 cuando sea mayor a 4), para después asignarle a cada grupo de 4 bits las cantidades de decenas y unidades, respectivamente.
+Lo que vemos a continuación es el hecho de tener dos entradas de 4 bits para generar la suma o la resta, respectivamente, que en este caso son A_do y B_do. Co_do sería el acarreo de salida. En des se guarda el valor de la operación matemática correspondiente a las decenas, y en uni el valor correspondiente a las unidades. mita es un registro de 13 bits que me permite crear un número que sirve para realizar la operación de "double dabble" (correr un bit y luego sumarle 5 cuando sea mayor a 4), para después asignarle a cada grupo de 4 bits las cantidades de decenas y unidades, respectivamente.
 
 <img width="1262" height="712" alt="image" src="https://github.com/user-attachments/assets/f92cba8e-9ff9-4482-840d-81459d18ffe9" />
+
+
+# 5. Codigos Implementados 
+
+## 7_seg 
+El módulo recibe como entrada num, que es ese número de 4 bits, y entrega como salida seg_out, una señal de 7 bits donde cada bit corresponde a uno de los segmentos del display (identificados como g, f, e, d, c, b, a). Internamente, usa una estructura case dentro de un bloque que se actualiza constantemente (combinacional), evaluando qué valor tiene num y, según eso, asignando el patrón exacto de segmentos que se deben encender o apagar para formar visualmente ese número en la pantalla
+
+<img width="912" height="672" alt="image" src="https://github.com/user-attachments/assets/29f8f133-7ccc-4d8b-a42d-6b313d3d19aa" />
+
+## double
+Este módulo integra un sumador/restador de 4 bits (sumador_4_bits/restador_4) con un proceso de conversión binario-a-BCD usando el algoritmo "Double Dabble". Recibe dos números de 4 bits (A_do, B_do) y una señal sel_do que selecciona si se suma o se resta.
+
+El resultado de la operación (So_do y el acarreo Co_do) se carga en un registro de 13 bits (mita). Luego, mediante un bloque combinacional, se realizan 5 desplazamientos sucesivos hacia la izquierda, y después de cada uno se verifica si el grupo de bits correspondiente (mita[8:5]) es mayor o igual a 5; si lo es, se le suma 3 (corrección típica del double dabble). Al final del proceso, los bits resultantes se separan en uni (unidades) y des (decenas), que luego se decodifican a 7 segmentos mediante uni_seg y des_seg para mostrarse en un display
+
+<img width="1456" height="750" alt="image" src="https://github.com/user-attachments/assets/3c9ae53b-49f5-4f5a-8b54-c5bf361e24b2" />
+<img width="1365" height="362" alt="image" src="https://github.com/user-attachments/assets/eeac3fc3-67b2-4a22-beef-642c4b560ebd" />
+<img width="1380" height="772" alt="image" src="https://github.com/user-attachments/assets/6e115095-d7b8-4bd6-b0c1-41f4a005d557" />
+
+
+## suma 
+Este módulo implementa un sumador completo de 1 bit, la unidad básica para construir sumadores de más bits. Recibe tres entradas: A y B (los bits a sumar) y Ci (el acarreo de entrada, "carry in"). Produce dos salidas: S, el resultado de la suma, y Co, el acarreo de salida ("carry out").
+
+<img width="1447" height="342" alt="image" src="https://github.com/user-attachments/assets/67a92ee2-04d9-401d-a547-8111b06e2bba" />
 
 
