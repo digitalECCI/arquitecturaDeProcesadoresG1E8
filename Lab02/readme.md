@@ -108,6 +108,6 @@ Este módulo implementa un sumador completo de 1 bit, la unidad básica para con
 https://youtube.com/shorts/jWe3wRK6m1o?feature=share
 
 
-#conclusiones 
+# conclusiones 
 Desarrollar este sistema en FPGA nos dejó bastante claro que el reto no estaba tanto en la aritmética en sí sumar o restar 4 bits es relativamente sencillo, sino en todo lo que hay que resolver alrededor para que ese resultado se pueda "leer" en un display físico. El módulo de suma/resta fue la parte más intuitiva del proyecto, pero en cuanto empezamos a integrarlo con el Double Dabble entendimos por qué este algoritmo es tan usado en hardware: convertir binario a BCD sin usar un divisor nos obligó a pensar en términos de desplazamientos y comparaciones, algo que en software resolveríamos con una simple operación de módulo, pero que en hardware requiere describir paso a paso cada corrimiento y cada corrección de +3.
 
