@@ -20,7 +20,7 @@ Indice:
 6. [Referencias](#referencias)
 
 
-## 1 Documentación del diseño implementado
+## 1 Documentación del diseño implementado :
 ### 1. sumador_1_bit
 # Sumador Completo de 1 Bit (1-bit Full Adder)
 
