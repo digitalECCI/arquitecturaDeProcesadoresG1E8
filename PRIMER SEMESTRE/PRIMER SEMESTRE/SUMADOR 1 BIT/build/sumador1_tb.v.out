@@ -1,0 +1,108 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "D:\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\iverilog\lib\ivl\va_math.vpi";
+S_000002c5da88b8e0 .scope module, "sumadorTB" "sumadorTB" 2 4;
+ .timescale 0 0;
+v000002c5da8d3d00_0 .var "A_tb", 0 0;
+v000002c5da8d38a0_0 .var "B_tb", 0 0;
+v000002c5da8d3c60_0 .var "Ci_tb", 0 0;
+v000002c5da8d3bc0_0 .net "Co_tb", 0 0, L_000002c5da920540;  1 drivers
+v000002c5da8d2fe0_0 .net "S_tb", 0 0, L_000002c5da9203f0;  1 drivers
+S_000002c5da88bd40 .scope begin, "TEST_CASE" "TEST_CASE" 2 51, 2 51 0, S_000002c5da88b8e0;
+ .timescale 0 0;
+S_000002c5da8d59f0 .scope module, "uut" "sumador1b" 2 13, 3 1 0, S_000002c5da88b8e0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /INPUT 1 "Ci";
+    .port_info 3 /OUTPUT 1 "S";
+    .port_info 4 /OUTPUT 1 "Co";
+L_000002c5da88bf70 .functor XOR 1, v000002c5da8d38a0_0, v000002c5da8d3c60_0, C4<0>, C4<0>;
+L_000002c5da9203f0 .functor XOR 1, v000002c5da8d3d00_0, L_000002c5da88bf70, C4<0>, C4<0>;
+L_000002c5da920230 .functor OR 1, v000002c5da8d3d00_0, v000002c5da8d3c60_0, C4<0>, C4<0>;
+L_000002c5da920070 .functor AND 1, v000002c5da8d38a0_0, L_000002c5da920230, C4<1>, C4<1>;
+L_000002c5da9204d0 .functor AND 1, v000002c5da8d3d00_0, v000002c5da8d3c60_0, C4<1>, C4<1>;
+L_000002c5da920540 .functor OR 1, L_000002c5da920070, L_000002c5da9204d0, C4<0>, C4<0>;
+v000002c5da88ba70_0 .net "A", 0 0, v000002c5da8d3d00_0;  1 drivers
+v000002c5da887480_0 .net "B", 0 0, v000002c5da8d38a0_0;  1 drivers
+v000002c5da886f90_0 .net "Ci", 0 0, v000002c5da8d3c60_0;  1 drivers
+v000002c5da88bed0_0 .net "Co", 0 0, L_000002c5da920540;  alias, 1 drivers
+v000002c5da88a2a0_0 .net "S", 0 0, L_000002c5da9203f0;  alias, 1 drivers
+v000002c5da8d5b80_0 .net *"_ivl_0", 0 0, L_000002c5da88bf70;  1 drivers
+v000002c5da8d5c20_0 .net *"_ivl_4", 0 0, L_000002c5da920230;  1 drivers
+v000002c5da8d5cc0_0 .net *"_ivl_6", 0 0, L_000002c5da920070;  1 drivers
+v000002c5da8d3b20_0 .net *"_ivl_8", 0 0, L_000002c5da9204d0;  1 drivers
+    .scope S_000002c5da88b8e0;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3d00_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d38a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3c60_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_000002c5da88b8e0;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3d00_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d38a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3c60_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3d00_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d38a0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002c5da8d3c60_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3d00_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002c5da8d38a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3c60_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3d00_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002c5da8d38a0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002c5da8d3c60_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002c5da8d3d00_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d38a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002c5da8d3c60_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_000002c5da88b8e0;
+T_2 ;
+    %fork t_1, S_000002c5da88bd40;
+    %jmp t_0;
+    .scope S_000002c5da88bd40;
+t_1 ;
+    %vpi_call 2 52 "$dumpfile", "simulacion_tb.vcd" {0 0 0};
+    %vpi_call 2 53 "$dumpvars", 32'sb11111111111111111111111111111111, S_000002c5da8d59f0 {0 0 0};
+    %delay 40, 0;
+    %end;
+    .scope S_000002c5da88b8e0;
+t_0 %join;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "sumador1_tb.v";
+    "./sumador1b.v";
