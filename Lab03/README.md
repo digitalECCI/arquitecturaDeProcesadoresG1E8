@@ -22,7 +22,7 @@
 
 ---
 
-## 1. Documentación
+## 1. Documentación :
 
 En esta sección se describen la estructura conceptual del algoritmo y los enlaces a los archivos Verilog que componen el sistema:
 
@@ -48,7 +48,7 @@ Estados por los que pasa la tarjeta (`START`, `CHECK`, `ADD`, `SHIFT`, `END`) y 
 
 ---
 
-## 2. Simulaciones
+## 2. Simulaciones :
 
 Corrimos la simulación en GTKWave para verificar la lógica antes de compilar en la FPGA. Se observa cómo el registro `estado` va cambiando secuencialmente, mientras que `a` y `b` se van desplazando y guardando el valor correcto en el registro del producto acumulado `pp`:
 
@@ -56,7 +56,7 @@ Corrimos la simulación en GTKWave para verificar la lógica antes de compilar e
 
 ---
 
-## 3. Evidencias de implementación
+## 3. Evidencias de implementación :
 
 Sintetizamos el proyecto en Quartus para revisar cómo se conectaron físicamente los módulos por dentro:
 
@@ -66,7 +66,7 @@ Sintetizamos el proyecto en Quartus para revisar cómo se conectaron físicament
 
 ---
 
-## 4. Preguntas
+## 4. Preguntas :
 
 1. **¿Cómo se entienden la FSM y el Datapath en esta práctica?**
    - La FSM funciona como el "cerebro" que da las órdenes (`reset`, `add`, `sh`), y el *Datapath* es la "calculadora" que ejecuta las sumas y desplazamientos. La FSM revisa dos señales del *Datapath*: si el bit menos significativo de $B$ es 1 (`lsb_b`) y si $B$ ya llegó a cero (`z`) para saber si continua o termina la multiplicación.
@@ -79,7 +79,7 @@ Sintetizamos el proyecto en Quartus para revisar cómo se conectaron físicament
 
 ---
 
-## 5. Conclusiones
+## 5. Conclusiones :
 
 - Comprobamos que el método de multiplicación secuencial por sumas y corrimientos reduce el área de hardware necesaria en la FPGA comparado con un diseño puramente combinacional.
 - La separación entre la unidad de control (FSM) y la de proceso (*Datapath*) hace que el código Verilog sea mucho más ordenado, fácil de simular y de corregir.
@@ -87,7 +87,7 @@ Sintetizamos el proyecto en Quartus para revisar cómo se conectaron físicament
 
 ---
 
-## 6. Referencias
+## 6. Referencias :
 
 - Guía de laboratorio: *Lab03 - Multiplicador de 3 bits usando Máquina de Estados*.
 - Charles H. Roth Jr., *Digital Systems Design Using Verilog*, Cengage Learning.
