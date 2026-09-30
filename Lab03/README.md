@@ -52,7 +52,7 @@ Estados por los que pasa la tarjeta (`START`, `CHECK`, `ADD`, `SHIFT`, `END`) y 
 
 Corrimos la simulación en GTKWave para verificar la lógica antes de compilar en la FPGA. Se observa cómo el registro `estado` va cambiando secuencialmente, mientras que `a` y `b` se van desplazando y guardando el valor correcto en el registro del producto acumulado `pp`:
 
-![Simulación GTKWave](fig/simulacion_tb.png)
+![Simulación GTKWave](fig/Simulacion_tb.png)
 
 ---
 
