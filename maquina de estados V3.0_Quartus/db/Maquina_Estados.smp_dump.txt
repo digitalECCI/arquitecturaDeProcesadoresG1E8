@@ -1,8 +1,0 @@
-
-State Machine - |multiplicador|estado
-Name estado.SHIFT estado.ADD estado.CHECK estado.START estado.END 
-estado.START 0 0 0 0 0 
-estado.CHECK 0 0 1 1 0 
-estado.ADD 0 1 0 1 0 
-estado.SHIFT 1 0 0 1 0 
-estado.END 0 0 0 1 1 
