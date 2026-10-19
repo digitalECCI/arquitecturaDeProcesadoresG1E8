@@ -1,0 +1,64 @@
+`include "bancoregistro.v"
+`include "alu.v"
+`include "uart.v" // Asegúrate de incluir el archivo de la UART
+`timescale 1s/1s
+
+module principal (
+    input wire clk,
+    input wire rst_n,            // Nota: Cambiado a rst_n (activo en bajo) para compatibilidad con UART
+    input wire [2:0] A,          
+    input wire [2:0] B,         
+    input wire carry_in,
+    input wire [2:0] opcode,
+    input wire [2:0] addr,       
+    input wire write_en,
+    input wire read_en,
+    output wire [7:0] alu_result, 
+    output wire zero,
+    output wire carry_out,
+    output wire negative,
+    output wire [7:0] data_out,  
+    // Nuevas salidas para la UART
+    output wire tx,
+    output wire busy
+);
+
+    wire [7:0] cable_alu_resultado;
+    wire [7:0] cable_data_out; // Cable para conectar el banco de registros con la UART
+    
+    assign alu_result = cable_alu_resultado;
+    assign data_out = cable_data_out; // Mantiene la salida visible si la necesitas en el top
+
+    // Instancia de la ALU
+    alu_custom u_alu (
+        .A(A),                           
+        .B(B),                           
+        .carry_in(carry_in),
+        .opcode(opcode),
+        .result(cable_alu_resultado),    
+        .zero(zero),
+        .carry_out(carry_out),
+        .negative(negative)
+    );
+    
+    // Instancia del Banco de Registros
+    banco_registros u_banco_reg (
+        .clk(clk),
+        .rst(~rst_n),                 // Si tu banco usa reset activo en alto, invierte rst_n
+        .data_in(cable_alu_resultado),
+        .addr(addr),                     
+        .write_en(write_en),             
+        .read_en(read_en),
+        .data_out(cable_data_out)     // Se conecta al cable intermedio       
+    );
+
+    // Instancia de la UART
+    uart u_uart (
+        .clk(clk),
+        .rst_n(rst_n),
+        .data_in(cable_data_out),     // Conectamos la salida del banco de registros a la UART
+        .tx(tx),
+        .busy(busy)
+    );
+
+endmodule

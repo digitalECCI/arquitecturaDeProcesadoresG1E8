@@ -1,0 +1,8 @@
+
+State Machine - |principal|uart:u_uart|state
+Name state.state_data state.state_start state.state_delay state.state_idle state.state_stop 
+state.state_idle 0 0 0 0 0 
+state.state_delay 0 0 1 1 0 
+state.state_start 0 1 0 1 0 
+state.state_data 1 0 0 1 0 
+state.state_stop 0 0 0 1 1 

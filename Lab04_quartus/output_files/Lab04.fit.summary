@@ -1,0 +1,12 @@
+I/O Assignment Analysis Status : Successful - Thu Oct 15 21:45:04 2026
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Revision Name : Lab04
+Top-level Entity Name : principal
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total pins : 30 / 360 ( 8 % )
+Total virtual pins : 0
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )
