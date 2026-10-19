@@ -1,9 +1,9 @@
 # Laboratorio 04: ALU, Banco de Registros y Transmisión UART
 
 ## Integrantes
-* **Integrante 1:** Nombre Apellido - *Correo / Nombre de usuario de GitHub*
-* **Integrante 2:** Nombre Apellido - *Correo / Nombre de usuario de GitHub*
-* **Integrante 3:** Nombre Apellido - *Correo / Nombre de usuario de GitHub*
+- [Edwin Albeiro Blanco](https://github.com/Edwinal05)
+- [Cristian David Maldonado](https://github.com/CristianMaldonadoTinjaca)
+- [Anderson Stiven Malagon](https://github.com/andersonstmalagonal-svg)
 
 ---
 
@@ -23,48 +23,41 @@
 
 ## 1. De qué trata el proyecto
 
-El objetivo de este lab es juntar tres partes esenciales de un sistema digital:
-1. Una **ALU** que hace los cálculos (sumas, restas y operaciones lógicas).
-2. Un **banco de registros** que guarda los resultados de la ALU en memoria.
-3. Un módulo **UART** para mandar esos datos guardados hacia el computador por cable serial y verlos en una terminal (pantalla).
-
-Con esto probamos el flujo completo: procesamos datos, los guardamos temporalmente y los enviamos al exterior.
+El objetivo de este laboratorio es integrar tres componentes fundamentales de un procesador digital:
+1. Una **ALU** que realiza los cálculos aritméticos (sumas, restas) y operaciones lógicas (AND, OR, XOR).
+2. Un **banco de registros** que almacena temporalmente los resultados generados por la ALU.
+3. Un módulo **UART** que toma la información leída del banco de registros y la envía de forma serial al computador para visualizarla en una terminal.
 
 ---
 
 ## 2. Cómo funciona el circuito por dentro
 
 ### El módulo de la ALU (`alu.v`)
-Recibe dos números de 3 bits (`A` y `B`). Para trabajar cómodamente, los rellena con ceros a la izquierda hasta volverlos de 8 bits. Según el código `opcode` que le mandemos, realiza una operación:
+Recibe dos operandos de 3 bits (`A` y `B`). Los extiende internamente a 8 bits rellenando con ceros y ejecuta la operación según el código `opcode`:
 
-* **Suma y Resta:** Usa `000` para sumar y `001` para restar (soporta acarreo con `carry_in`).
-* **Modificadores:** Con `010` incrementa en 1 el valor de `A`, y con `011` lo decrementa.
-* **Operaciones lógicas:** Aplica las compuertas `AND` (`100`), `OR` (`101`) y `XOR` (`110`).
-* **Banderas:** Si el resultado da cero, prende la señal `zero`. Si es negativo, prende `negative`. Si hubo desbordamiento, activa `carry_out`.
+* **Aritmética:** `000` (Suma `ADD`), `001` (Resta `SUB`), `010` (Incrementar `A`) y `011` (Decrementar `A`).
+* **Lógica:** `100` (`AND`), `101` (`OR`) y `110` (`XOR`).
+* **Banderas de estado:** Evalúa si el resultado da cero (`zero`), si es negativo (`negative`) o si hubo desbordamiento (`carry_out`).
 
 ### El Banco de Registros (`bancoregistro.v`)
-Es una pequeña memoria de 8 posiciones (de la `0` a la `7`), donde cada posición guarda un dato de 8 bits:
-* **Para guardar:** Cuando activamos `write_en` en 1 y le damos un pulso de reloj, el dato que viene de la ALU se almacena en la dirección `addr`.
-* **Para leer:** Cuando activamos `read_en` en 1, el módulo saca por `data_out` lo que esté guardado en la dirección `addr`.
-* Si presionamos el botón de reset (`rst`), las 8 posiciones de memoria se limpian y quedan en cero.
+Consiste en un arreglo de 8 registros de 8 bits cada uno (`registros[0:7]`):
+* **Escritura:** Al activar `write_en = 1` en un flanco de subida del reloj (`clk`), el resultado proveniente de la ALU se guarda en la dirección `addr`.
+* **Lectura:** Al activar `read_en = 1`, el dato almacenado en la posición `addr` se coloca en el bus de salida `data_out`.
+* **Reset:** Al activar `rst`, limpia todas las posiciones de memoria poniéndolas en cero.
 
 ### El módulo UART (`uart.v`)
-Se encarga de enviar el dato seleccionado del banco de registros hacia el computador de bit en bit. 
-* Trabaja a una velocidad estándar de **9600 baudios** usando el reloj de la FPGA de 50 MHz.
-* Tiene un contador de pausa que espera un tiempo entre transmisiones para no saturar la pantalla.
-* Pasa por 5 estados sencillos: espera (`idle`), pausa (`delay`), envía el bit de arranque (`start`), transmite los 8 bits del dato uno por uno (`data`) y cierra la transmisión con el bit de parada (`stop`).
+Se encarga de la comunicación serial asíncrona hacia el computador a una velocidad de **9600 baudios** con un reloj de 50 MHz. Pasa por una máquina de estados que gestiona los tiempos de transmisión:
+* Estados: Espera (`idle`), pausa (`delay`), bit de inicio (`start`), transmisión de los 8 bits de datos (`data`) y bit de parada (`stop`).
 
 ### El módulo principal (`principal.v`)
-Es el que conecta todo como un rompecabezas:
-1. Conecta las salidas de la ALU directamente a la entrada del banco de registros.
-2. Toma la salida de lectura del banco de registros (`cable_data_out`) y se la entrega al módulo UART.
-3. Saca las señales `tx` (para el cable serial) y `busy` (para saber si la UART está ocupada) hacia afuera.
+Conecta todos los bloques del sistema:
+1. Conecta el resultado de la ALU a la entrada de datos del banco de registros.
+2. La salida leída del banco de registros (`cable_data_out`) se conecta a la entrada de la UART.
+3. Expone hacia el exterior las líneas de control, las banderas de estado y los pines de transmisión UART (`tx`, `busy`).
 
 ---
 
 ## 3. Diagramas y esquemáticos
-
-*Aquí colocaremos el esquema de cómo se conectan los módulos entre sí y el diagrama del flujo de estados de la UART:*
 
 <!-- Coloca aquí la imagen de tu diagrama de bloques general -->
 ![Diagrama de Bloques General](./fig/diagrama_bloques_top.png)
@@ -76,28 +69,26 @@ Es el que conecta todo como un rompecabezas:
 
 ## 4. Pruebas y simulación (GTKWave)
 
-Probamos el funcionamiento completo en GTKWave usando el banco de pruebas `principaltb.v`:
+Probamos el funcionamiento del sistema en GTKWave mediante el testbench `principaltb.v`:
 
 <!-- Coloca aquí la captura de tu simulación en GTKWave -->
 ![Simulación GTKWave](./fig/simulacion_gtkwave.png)
 
-* **Prueba de Suma:** Le dimos $A=3$ y $B=2$ en modo suma (`opcode = 000`). La ALU calculó $5$, lo guardamos en la dirección `001` y al leer ese registro, efectivamente salió un $5$.
-* **Prueba de Resta:** Probamos $7 - 2$ (`opcode = 001`), dando $5$, guardado correctamente en la posición `010`.
-* **Prueba Lógica (AND):** Evaluamos la operación entre $5$ y $3$ (`101 AND 011`), obteniendo $1$ en la dirección `011`.
+* **Prueba 1 (Suma):** Se calculó $A=3$ y $B=2$ (`opcode = 000`), obteniendo $5$. Se guardó en el registro `addr = 1` y al leerlo se comprobó que el valor $5$ salía hacia la UART.
+* **Prueba 2 (Resta):** Se calculó $7 - 2$ (`opcode = 001`), guardando el resultado ($5$) en la posición `addr = 2`.
+* **Prueba 3 (AND Lógico):** Se evaluó $5 \text{ AND } 3$ (`opcode = 100`), almacenando el valor $1$ en el registro `addr = 3`.
 
 ---
 
 ## 5. Prueba física en la FPGA
 
-*Aquí irán las fotografías o el enlace al video mostrando el funcionamiento en vivo con los switches de la tarjeta y la consola en el PC:*
-
-<!-- Coloca aquí la imagen o enlace de evidencia -->
+<!-- Coloca aquí la imagen o enlace de la prueba física -->
 ![Prueba en la tarjeta FPGA](./fig/evidencia_fpga.png)
 
 ---
 
 ## 6. Lo que aprendimos (Conclusiones)
 
-* **Todo conectado en cadena:** Entendimos cómo se mueven los datos dentro de un procesador básico. Lo que calcula la ALU pasa directo a guardarse en memoria y de ahí lo podemos mandar al exterior sin enredos.
-* **El reloj importa:** Trabajar con el banco de registros nos dejó claro que para guardar información hay que estar bien sincronizados con el reloj (`clk`) y no dejar señales flotando.
-* **La utilidad de la UART:** Ver los datos en una terminal de computador en lugar de depender solo de bombillos LED ayuda muchísimo a entender si el circuito está respondiendo bien a lo que guardamos en los registros.
+* **Flujo continuo de datos:** Logramos conectar la ALU, la memoria interna (banco de registros) y la interfaz de salida (UART) en una sola cadena funcional, entendiendo la arquitectura básica de procesamiento.
+* **Sincronización:** Comprobamos la importancia de controlar adecuadamente las señales de habilitación de lectura y escritura junto al reloj para garantizar que no se pierdan ni se sobrescriban los datos guardados.
+* **Verificación externa:** El uso del protocolo UART facilitó la inspección de los datos almacenados en memoria directamente desde la terminal del computador.
