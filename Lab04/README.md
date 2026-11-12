@@ -60,7 +60,8 @@ Conecta todos los bloques del sistema:
 ## 3. Diagramas y esquemáticos
 
 <!-- Coloca aquí la imagen de tu diagrama de bloques general -->
-![Diagrama de Bloques General](./fig/diagrama_bloques_top.png)
+![Diagrama de Bloques General](<img width="1528" height="756" alt="image" src="https://github.com/user-attachments/assets/95584baf-48e9-4950-8194-e537b654a947" />
+)
 
 <!-- Coloca aquí la imagen del diagrama de estados de la UART -->
 ![FSM UART](./fig/fsm_uart.png)
