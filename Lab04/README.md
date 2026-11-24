@@ -59,36 +59,17 @@ Conecta todos los bloques del sistema:
 
 ## 3. Diagramas y esquemáticos
 
-<!-- Coloca aquí la imagen de tu diagrama de bloques general -->
 ![Diagrama de Bloques General](<img width="1528" height="756" alt="image" src="https://github.com/user-attachments/assets/95584baf-48e9-4950-8194-e537b654a947" />
 )
 
-<!-- Coloca aquí la imagen del diagrama de estados de la UART -->
-![FSM UART](./fig/fsm_uart.png)
-
----
-
-## 4. Pruebas y simulación (GTKWave)
-
-Probamos el funcionamiento del sistema en GTKWave mediante el testbench `principaltb.v`:
-
-<!-- Coloca aquí la captura de tu simulación en GTKWave -->
-![Simulación GTKWave](./fig/simulacion_gtkwave.png)
 
 * **Prueba 1 (Suma):** Se calculó $A=3$ y $B=2$ (`opcode = 000`), obteniendo $5$. Se guardó en el registro `addr = 1` y al leerlo se comprobó que el valor $5$ salía hacia la UART.
 * **Prueba 2 (Resta):** Se calculó $7 - 2$ (`opcode = 001`), guardando el resultado ($5$) en la posición `addr = 2`.
 * **Prueba 3 (AND Lógico):** Se evaluó $5 \text{ AND } 3$ (`opcode = 100`), almacenando el valor $1$ en el registro `addr = 3`.
 
----
 
-## 5. Prueba física en la FPGA
 
-<!-- Coloca aquí la imagen o enlace de la prueba física -->
-![Prueba en la tarjeta FPGA](./fig/evidencia_fpga.png)
-
----
-
-## 6. Lo que aprendimos (Conclusiones)
+## 4. Lo que aprendimos (Conclusiones)
 
 * **Flujo continuo de datos:** Logramos conectar la ALU, la memoria interna (banco de registros) y la interfaz de salida (UART) en una sola cadena funcional, entendiendo la arquitectura básica de procesamiento.
 * **Sincronización:** Comprobamos la importancia de controlar adecuadamente las señales de habilitación de lectura y escritura junto al reloj para garantizar que no se pierdan ni se sobrescriban los datos guardados.
