@@ -1,0 +1,12 @@
+**** module/scope: banco_registros
+     Flip-Flops   : 72
+     Logic Gates  : 8
+     LPM[5]: 17 unaccounted
+     LOG[13]: 9 unaccounted
+     LOG[14]: 1 unaccounted
+**** TOTALS
+     Flip-Flops   : 72
+     Logic Gates  : 8
+     LPM[5]: 17 unaccounted
+     LOG[13]: 9 unaccounted
+     LOG[14]: 1 unaccounted
