@@ -62,7 +62,7 @@ El procesador se comunica con los periféricos escribiendo y leyendo directament
 
 Sintetizamos el proyecto completo en Quartus (`top.qpf`) y compilamos el firmware mediante el `Makefile` para verificar el funcionamiento del procesador en la tarjeta DE10-Lite:
 
-| Esquemático RTL del SoC | Consola Serial UART / Pruebas en FPGA |
+|  Consola Serial UART / Pruebas en FPGA |
 | :---: | :---: |
 | ![Esquemático RTL PicoSoC](fig/rtl_picosoc.png) 
 
