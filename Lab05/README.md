@@ -1,9 +1,9 @@
 # Lab05: Set de Instrucciones (ISA) y Unidad de Control en FPGA MAX 10
 
 ## Integrantes
-* Cristian David Maldonado
-* Anderson Stiven Malagon
-
+- [Edwin Albeiro Blanco](https://github.com/Edwinal05)
+- [Cristian David Maldonado](https://github.com/CristianMaldonadoTinjaca)
+- [Anderson Stiven Malagon](https://github.com/andersonstmalagonal-svg)
 ---
 
 ## Tabla de Contenidos
