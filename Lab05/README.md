@@ -1,9 +1,9 @@
 # Lab05: Set de Instrucciones (ISA) y Unidad de Control en FPGA MAX 10
 
 ## Integrantes
-- [Edwin Albeiro Blanco](https://github.com/Edwinal05)
-- [Cristian David Maldonado](https://github.com/CristianMaldonadoTinjaca)
-- [Anderson Stiven Malagon](https://github.com/andersonstmalagonal-svg)
+* Cristian David Maldonado
+* Anderson Stiven Malagon
+
 ---
 
 ## Tabla de Contenidos
@@ -32,8 +32,8 @@ A continuación se describen los módulos en Verilog HDL que conforman el proces
 - **[top_procesador.v](src/top_procesador.v):** Módulo estructural de nivel superior que interconecta la `unidad_control`, la memoria ROM de instrucciones, el banco de registros, los registros temporales `A_reg` y `B_reg`, la ALU (con multiplicador y divisor secuenciales), el transmisor UART y los periféricos de visualización (LEDs / displays de 7 segmentos de la tarjeta DE10-Lite).
 - **[rom_instrucciones.v](src/rom_instrucciones.v):** Memoria de solo lectura (ROM) direccionada por `pc_out[3:0]` que entrega la palabra de instrucción `rom_data[15:0]` con el programa de prueba precargado.
 - **[banco_registros.v](src/banco_registros.v):** Banco de 8 registros de propósito general de 8 bits (`R0` a `R7`) direccionados mediante `bank_addr[2:0]`, gobernado por las señales de control `bank_read_en` y `bank_write_en` (manteniendo `R0` cableado a cero según la convención RISC).
-- **[alu_completa.v](src/alu_completa.v):** Unidad aritmético-lógica de 8 bits que ejecuta operaciones combinacionales (`ADD`, `SUB`, `AND`, `OR`, `XOR`, `CMP`) y secuenciales (`MUL` y `DIV`), recibiendo `alu_sel[2:0]` y `alu_start` y reportando finalización mediante `alu_done`, `div_done` y `div_err`[cite: 7, 8].
-- **[uart_tx.v](src/uart_tx.v):** Transmisor serial asíncrono (UART) encargado de enviar por el pin TX el dato cargado en `A_reg` al ejecutar la instrucción `OUT`, indicando su estado mediante la bandera `uart_ocupado`[cite: 7, 8].
+- **[alu_completa.v](src/alu_completa.v):** Unidad aritmético-lógica de 8 bits que ejecuta operaciones combinacionales (`ADD`, `SUB`, `AND`, `OR`, `XOR`, `CMP`) y secuenciales (`MUL` y `DIV`), recibiendo `alu_sel[2:0]` y `alu_start` y reportando finalización mediante `alu_done`, `div_done` y `div_err`.
+- **[uart_tx.v](src/uart_tx.v):** Transmisor serial asíncrono (UART) encargado de enviar por el pin TX el dato cargado en `A_reg` al ejecutar la instrucción `OUT`, indicando su estado mediante la bandera `uart_ocupado`.
 - **[procesador_tb.v](src/procesador_tb.v):** Banco de pruebas (*Testbench*) utilizado para verificar ciclo a ciclo el recorrido completo *Fetch–Decode–Execute–Writeback*, los tiempos de espera de multiplicación/división/UART y el resultado final `(5 + 3) * 5 = 40`.
 
 ---
@@ -46,8 +46,8 @@ El procesador utiliza una arquitectura **Load/Store con instrucciones de ancho f
 
 | Formato | `IR[15:12]` (4 bits) | `IR[11:9]` (3 bits) | `IR[8:6]` (3 bits) | `IR[5:3]` (3 bits) | `IR[2:0]` (3 bits) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Tipo R** (Registro-Registro) | `opcode`[cite: 7, 8] | `rd` (Destino)[cite: 7, 8] | `rs` (Fuente 1)[cite: 7, 8] | `rt` (Fuente 2)[cite: 7, 8] | Sin uso (`---`) |
-| **Tipo I** (Inmediato) | `opcode`[cite: 7, 8] | `rd` (Destino)[cite: 7, 8] | `inmediato[8:6]`[cite: 7, 8] | `inmediato[5:3]`[cite: 7, 8] | `inmediato[2:0]` (se toman `IR[7:0]`)[cite: 7, 8] |
+| **Tipo R** (Registro-Registro) | `opcode` | `rd` (Destino) | `rs` (Fuente 1) | `rt` (Fuente 2) | Sin uso (`---`) |
+| **Tipo I** (Inmediato) | `opcode` | `rd` (Destino) | `inmediato[8:6]` | `inmediato[5:3]` | `inmediato[2:0]` (se toman `IR[7:0]`) |
 
 ### Tabla del Set de Instrucciones (ISA)
 
@@ -59,34 +59,34 @@ El procesador utiliza una arquitectura **Load/Store con instrucciones de ancho f
 | `0011` | **OR** | R | `rd = rs \| rt` | Operación lógica OR bit a bit. |
 | `0100` | **XOR** | R | `rd = rs ^ rt` | Operación lógica XOR bit a bit. |
 | `0101` | **CMP** | R | `rs - rt` (Banderas) | Compara `rs` y `rt` actualizando banderas de estado sin sobrescribir `rd`. |
-| `0110` | **MUL** | R | `rd = rs * rt` | Lanza el multiplicador secuencial (`alu_start`) y espera `alu_done`[cite: 7, 8]. |
-| `0111` | **DIV** | R | `rd = rs / rt` | Lanza el divisor secuencial y espera `div_done` (validando `div_err`)[cite: 7, 8]. |
-| `1000` | **LI** | I | `rd = inmediato` | Carga el valor inmediato `IR[7:0]` directo en `rd` (`wsel = 2'b01`)[cite: 7, 8]. |
-| `1001` | **MOV** | R | `rd = rs` | Transfiere el contenido de `rs` (vía `A_reg`) hacia `rd` (`wsel = 2'b11`)[cite: 7, 8]. |
-| `1010` | **OUT** | R | `UART_TX <- rs` | Transmite el valor de `rs` por el puerto serial UART esperando `~uart_ocupado`[cite: 7, 8]. |
-| `1111` | **HALT** | — | Detener CPU | Congela la FSM en un estado terminal hasta recibir un `rst_n`[cite: 7, 8]. |
+| `0110` | **MUL** | R | `rd = rs * rt` | Lanza el multiplicador secuencial (`alu_start`) y espera `alu_done`. |
+| `0111` | **DIV** | R | `rd = rs / rt` | Lanza el divisor secuencial y espera `div_done` (validando `div_err`). |
+| `1000` | **LI** | I | `rd = inmediato` | Carga el valor inmediato `IR[7:0]` directo en `rd` (`wsel = 2'b01`). |
+| `1001` | **MOV** | R | `rd = rs` | Transfiere el contenido de `rs` (vía `A_reg`) hacia `rd` (`wsel = 2'b11`). |
+| `1010` | **OUT** | R | `UART_TX <- rs` | Transmite el valor de `rs` por el puerto serial UART esperando `~uart_ocupado`. |
+| `1111` | **HALT** | — | Detener CPU | Congela la FSM en un estado terminal hasta recibir un `rst_n`. |
 
 ---
 
 ## 3. Unidad de Control (FSM Moore) y Datapath Integrado :
 
-La unidad de control (`unidad_control.v`) implementa una máquina de estados de tipo **Moore** sincronizada por flanco de reloj (`clk`) y reinicio activo en bajo (`rst_n`)[cite: 7, 8]. Debido a que el banco de registros comparte un único bus de direccionamiento (`bank_addr[2:0]`), la captura de operandos de las instrucciones Tipo R se realiza secuencialmente mediante los registros temporales **`A_reg`** y **`B_reg`** ubicados en el módulo `top`[cite: 7, 8]:
+La unidad de control (`unidad_control.v`) implementa una máquina de estados de tipo **Moore** sincronizada por flanco de reloj (`clk`) y reinicio activo en bajo (`rst_n`). Debido a que el banco de registros comparte un único bus de direccionamiento (`bank_addr[2:0]`), la captura de operandos de las instrucciones Tipo R se realiza secuencialmente mediante los registros temporales **`A_reg`** y **`B_reg`** ubicados en el módulo `top`:
 
-1. **Fetch (Búsqueda):** Coloca `pc_out` en la ROM, captura `rom_data` en el registro `IR[15:0]` e incrementa el contador de programa cuando `avanzar == 1`[cite: 7, 8].
+1. **Fetch (Búsqueda):** Coloca `pc_out` en la ROM, captura `rom_data` en el registro `IR[15:0]` e incrementa el contador de programa cuando `avanzar == 1`.
 2. **Decode / Lectura de Operandos (`a_load`, `b_load`):**
-   - Selecciona `bank_addr = rs` y activa `bank_read_en` para capturar el primer operando en `A_reg` (`a_load = 1`)[cite: 7, 8].
-   - En instrucciones de dos operandos (`ADD`, `SUB`, `MUL`, `DIV`, etc.), selecciona `bank_addr = rt` y activa `b_load = 1` para capturar el segundo operando en `B_reg`[cite: 7, 8].
+   - Selecciona `bank_addr = rs` y activa `bank_read_en` para capturar el primer operando en `A_reg` (`a_load = 1`).
+   - En instrucciones de dos operandos (`ADD`, `SUB`, `MUL`, `DIV`, etc.), selecciona `bank_addr = rt` y activa `b_load = 1` para capturar el segundo operando en `B_reg`.
 3. **Execute (Ejecución y *Handshake*):**
-   - Configura `alu_sel[2:0]` a partir de `opcode[2:0]`[cite: 7, 8].
-   - Para operaciones secuenciales (`MUL`, `DIV`) activa `alu_start` y permanece en un estado de espera hasta detectar `alu_done == 1` o `div_done == 1`[cite: 7, 8].
-   - Para `OUT`, dispara el envío serial y espera a que `uart_ocupado` regrese a `0`[cite: 7, 8].
+   - Configura `alu_sel[2:0]` a partir de `opcode[2:0]`.
+   - Para operaciones secuenciales (`MUL`, `DIV`) activa `alu_start` y permanece en un estado de espera hasta detectar `alu_done == 1` o `div_done == 1`.
+   - Para `OUT`, dispara el envío serial y espera a que `uart_ocupado` regrese a `0`.
 4. **Writeback (Escritura en Registro Destino):**
-   - Configura el multiplexor de escritura mediante `wsel[1:0]`[cite: 7, 8]:
-     - `00`: Resultado de la ALU / Multiplicador[cite: 7, 8].
-     - `01`: Dato inmediato (`IR[7:0]`, instrucción `LI`)[cite: 7, 8].
-     - `10`: Cociente del divisor (`DIV`)[cite: 7, 8].
-     - `11`: Contenido de `A_reg` (instrucción `MOV`)[cite: 7, 8].
-   - Apunta `bank_addr = rd` y activa `bank_write_en = 1` durante un ciclo de reloj[cite: 7, 8].
+   - Configura el multiplexor de escritura mediante `wsel[1:0]`:
+     - `00`: Resultado de la ALU / Multiplicador.
+     - `01`: Dato inmediato (`IR[7:0]`, instrucción `LI`).
+     - `10`: Cociente del divisor (`DIV`).
+     - `11`: Contenido de `A_reg` (instrucción `MOV`).
+   - Apunta `bank_addr = rd` y activa `bank_write_en = 1` durante un ciclo de reloj.
 
 ---
 
