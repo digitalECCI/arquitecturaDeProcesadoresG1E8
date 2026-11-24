@@ -8,6 +8,7 @@ SOURCES := ${current_dir}/picosoc_noflash.v \
 SIM_SOURCES := ${current_dir}/arty_tb.cpp
 
 CROSS = riscv-none-elf-
+CFLAGS = -Os -fno-builtin
 
 SDC := ${current_dir}/picosoc.sdc
 

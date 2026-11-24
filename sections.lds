@@ -1,8 +1,7 @@
-
 MEMORY
 {
-    FLASH (rx)      : ORIGIN = 0x00100000, LENGTH = 0x200 /* entire flash */
-    RAM (xrw)       : ORIGIN = 0x00000000, LENGTH = 0x80 /* entire RAM */
+    FLASH (rx)      : ORIGIN = 0x00100000, LENGTH = 0x2000 /* entire flash (8 KB) */
+    RAM (xrw)       : ORIGIN = 0x00000000, LENGTH = 0x800  /* entire RAM (2 KB) */
 }
 
 SECTIONS {
@@ -34,7 +33,7 @@ SECTIONS {
         . = ALIGN(4);
         *(.data)           /* .data sections */
         *(.data*)          /* .data* sections */
-        *(.sdata)           /* .sdata sections */
+        *(.sdata)          /* .sdata sections */
         *(.sdata*)          /* .sdata* sections */
         . = ALIGN(4);
         _edata = .;        /* define a global symbol at data end; used by startup code in order to initialise the .data section in RAM */
