@@ -64,9 +64,9 @@ Sintetizamos el proyecto completo en Quartus (`top.qpf`) y compilamos el firmwar
 
 | Esquemático RTL del SoC | Consola Serial UART / Pruebas en FPGA |
 | :---: | :---: |
-| ![Esquemático RTL PicoSoC](fig/rtl_picosoc.png) | ![Pruebas UART en DE10-Lite](fig/prueba_uart.png) |
+| ![Esquemático RTL PicoSoC](fig/rtl_picosoc.png) 
 
-*(Nota: Crea una carpeta `fig/` dentro de `Lab06` y guarda allí tus capturas con esos nombres para que se visualicen automáticamente).*
+
 
 ---
 
