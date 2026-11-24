@@ -1,9 +1,9 @@
 # Lab05: Set de Instrucciones (ISA) y Unidad de Control en FPGA MAX 10
 
 ## Integrantes
-* Cristian David Maldonado
-* Anderson Stiven Malagon
-
+- [Edwin Albeiro Blanco](https://github.com/Edwinal05)
+- [Cristian David Maldonado](https://github.com/CristianMaldonadoTinjaca)
+- [Anderson Stiven Malagon](https://github.com/andersonstmalagonal-svg)
 ---
 
 ## Tabla de Contenidos
@@ -101,3 +101,28 @@ Para validar tanto las operaciones combinacionales como el *handshake* secuencia
 0x3: MUL  R4, R3, R1   ; R4 <- 8 * 5 = 40 (0x28) - verifica handshake start/done
 0x4: OUT  R4           ; Envía 0x28 (40) por UART TX
 0x5: HALT              ; Detiene la ejecución del procesador
+---
+
+## 5. Evidencias de Diseño, Simulación e Implementación en FPGA :
+
+### Síntesis RTL de la Unidad de Control
+
+| Esquemático RTL Generado en Quartus (`unidad_control.v`) |
+| :---: |
+| ![Esquemático RTL](fig/rtl_lab05.jpg) |
+
+---
+
+## 6. Conclusiones :
+
+* La separación estricta entre la **unidad de control (FSM Moore)** y el **datapath** permite integrar módulos combinacionales y secuenciales (multiplicador, divisor y UART) sin modificar su lógica interna, gobernándolos únicamente mediante protocolos *handshake* (`start`/`done`).
+* El uso de registros intermedios de operandos (`A_reg` y `B_reg`) resuelve de forma limpia la lectura secuencial de dos registros fuente sobre un banco de registros de un solo puerto de dirección (`bank_addr[2:0]`).
+* La simulación previa mediante el *testbench* resultó indispensable para verificar la sincronización de `bank_write_en` y `wsel` antes de sintetizar el diseño sobre la tarjeta DE10-Lite.
+
+---
+
+## 7. Referencias :
+
+1. Harris, D. M., & Harris, S. L. (2012). *Digital Design and Computer Architecture* (2nd ed.). Morgan Kaufmann. (Capítulo 7: Microarchitecture).
+2. Patterson, D. A., & Hennessy, J. L. (2017). *Computer Organization and Design RISC-V Edition*. Morgan Kaufmann.
+3. Intel Corporation. *MAX 10 FPGA Device Architecture & Quartus Prime Lite User Guide*.
