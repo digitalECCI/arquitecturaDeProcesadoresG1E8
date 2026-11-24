@@ -108,7 +108,8 @@ Para validar tanto las operaciones combinacionales como el *handshake* secuencia
 
 | Esquemático RTL Generado en Quartus (`unidad_control.v`) |
 | :---: |
-| ![Esquemático RTL](fig/rtl_lab05.jpg) |
+| ![Esquemático RTL](![Uploading rtl_lab05.jpg.jpg…]()
+) |
 
 ---
 
