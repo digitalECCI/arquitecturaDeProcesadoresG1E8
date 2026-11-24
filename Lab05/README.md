@@ -5,7 +5,6 @@
 - [Cristian David Maldonado](https://github.com/CristianMaldonadoTinjaca)
 - [Anderson Stiven Malagon](https://github.com/andersonstmalagonal-svg)
 ---
-
 ## Tabla de Contenidos
 1. [Documentación del Código HDL](#1-documentación-del-código-hdl-)
    - [unidad_control.v](src/unidad_control.v)
@@ -94,13 +93,13 @@ La unidad de control (`unidad_control.v`) implementa una máquina de estados de 
 
 Para validar tanto las operaciones combinacionales como el *handshake* secuencial (`MUL`) y la salida externa (`OUT`), se cargó en la memoria ROM el cálculo de `(5 + 3) * 5 = 40` (`0x28` en hexadecimal, carácter `'('` en ASCII):
 
-```assembly
-0x0: LI   R1, 5        ; R1 <- 0x05 (5 decimal)
-0x1: LI   R2, 3        ; R2 <- 0x03 (3 decimal)
-0x2: ADD  R3, R1, R2   ; R3 <- 5 + 3 = 8 (0x08)
-0x3: MUL  R4, R3, R1   ; R4 <- 8 * 5 = 40 (0x28) - verifica handshake start/done
-0x4: OUT  R4           ; Envía 0x28 (40) por UART TX
-0x5: HALT              ; Detiene la ejecución del procesador
+    0x0: LI   R1, 5        ; R1 <- 0x05 (5 decimal)
+    0x1: LI   R2, 3        ; R2 <- 0x03 (3 decimal)
+    0x2: ADD  R3, R1, R2   ; R3 <- 5 + 3 = 8 (0x08)
+    0x3: MUL  R4, R3, R1   ; R4 <- 8 * 5 = 40 (0x28) - verifica handshake start/done
+    0x4: OUT  R4           ; Envía 0x28 (40) por UART TX
+    0x5: HALT              ; Detiene la ejecución del procesador
+
 ---
 
 ## 5. Evidencias de Diseño, Simulación e Implementación en FPGA :
