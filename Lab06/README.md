@@ -28,14 +28,13 @@
 
 En esta sección se describe la arquitectura hardware/software del sistema en chip (SoC) y los enlaces a los archivos que componen el proyecto en el repositorio:
 
-- **[picorv32.v](picorv32.v):** Núcleo procesador de 32 bits basado en la arquitectura abierta **RISC-V (RV32I)** optimizado para bajo consumo de área en FPGA.
-- **[picosoc_noflash.v](picosoc_noflash.v):** Módulo de integración del SoC sin memoria Flash externa; interconecta el procesador `picorv32`, la memoria interna (`progmem`), el controlador UART y el bus de periféricos externos (*IOMem*).
-- **[simpleuart.v](simpleuart.v):** Periférico de comunicación serial asíncrona (UART) con divisor de reloj configurable para transmisión y recepción de datos.
-- **[progmem.v](progmem.v):** Memoria RAM/ROM sintetizable en bloques internos de la FPGA donde se almacena el programa compilado y los datos de ejecución.
-- **[main.c](main.c):** Código fuente en lenguaje C (*bare-metal*, sin librerías estándar) que gestiona la comunicación serial, el control de los LEDs y la lectura de los switches.
-- **[start.s](start.s) / [sections.lds](sections.lds):** Rutina de arranque en ensamblador RISC-V (inicialización de pila y registros) y *linker script* que define la distribución de memoria del firmware.
-- **[Makefile](Makefile) / [progmem.py](progmem.py):** Automatización de la compilación cruzada (`riscv-none-elf-gcc`) para generar el binario (`main.bin`) y convertirlo al formato legible por Verilog (`progmem.v`).
-
+- **[picorv32.v](src/picorv32.v):** Núcleo procesador de 32 bits basado en la arquitectura abierta **RISC-V (RV32I)** optimizado para bajo consumo de área en FPGA.
+- **[picosoc_noflash.v](src/picosoc_noflash.v):** Módulo de integración del SoC sin memoria Flash externa; interconecta el procesador `picorv32`, la memoria interna (`progmem`), el controlador UART y el bus de periféricos externos (*IOMem*).
+- **[simpleuart.v](src/simpleuart.v):** Periférico de comunicación serial asíncrona (UART) con divisor de reloj configurable para transmisión y recepción de datos.
+- **[progmem.v](src/progmem.v):** Memoria RAM/ROM sintetizable en bloques internos de la FPGA donde se almacena el programa compilado y los datos de ejecución.
+- **[main.c](src/main.c):** Código fuente en lenguaje C (*bare-metal*, sin librerías estándar) que gestiona la comunicación serial, el control de los LEDs y la lectura de los switches.
+- **[start.s](src/start.s) / [sections.lds](src/sections.lds):** Rutina de arranque en ensamblador RISC-V (inicialización de pila y registros) y *linker script* que define la distribución de memoria del firmware.
+- **[Makefile](src/Makefile) / [progmem.py](src/progmem.py):** Automatización de la compilación cruzada (`riscv-none-elf-gcc`) para generar el binario (`main.bin`) y convertirlo al formato legible por Verilog (`progmem.v`).
 ---
 
 ## 2. Mapa de Memoria y Arquitectura :
