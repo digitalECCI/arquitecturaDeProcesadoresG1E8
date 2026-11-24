@@ -8,20 +8,14 @@
 ---
 
 ## Tabla de Contenidos
-1. [Documentación](#1-documentación)
-   - [picorv32](picorv32.v)
-   - [picosoc_noflash](picosoc_noflash.v)
-   - [simpleuart](simpleuart.v)
-   - [progmem](progmem.v)
-   - [main.c](main.c)
-   - [start.s y sections.lds](start.s)
-   - [Makefile y progmem.py](Makefile)
-2. [Mapa de Memoria y Arquitectura](#2-mapa-de-memoria-y-arquitectura)
-3. [Evidencias de implementación](#3-evidencias-de-implementación)
-4. [Preguntas](#4-preguntas)
-5. [Conclusiones](#5-conclusiones)
-6. [Referencias](#6-referencias)
-
+1. [Documentación](#1-documentación-)
+   - [picorv32](src/picorv32.v)
+   - [picosoc_noflash](src/picosoc_noflash.v)
+   - [simpleuart](src/simpleuart.v)
+   - [progmem](src/progmem.v)
+   - [main.c](src/main.c)
+   - [start.s y sections.lds](src/start.s)
+   - [Makefile y progmem.py](src/Makefile)
 ---
 
 ## 1. Documentación :
