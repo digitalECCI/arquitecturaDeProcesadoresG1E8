@@ -1,0 +1,16 @@
+
+State Machine - |unidad_control|estado
+Name estado.S_HALT estado.S_UART_WAIT estado.S_UART_START estado.S_WB estado.S_DIV_WAIT estado.S_DIV_START estado.S_ALU_WAIT estado.S_ALU_START estado.S_CAPB estado.S_RT estado.S_RS estado.S_DECODE estado.S_FETCH 
+estado.S_FETCH 0 0 0 0 0 0 0 0 0 0 0 0 0 
+estado.S_DECODE 0 0 0 0 0 0 0 0 0 0 0 1 1 
+estado.S_RS 0 0 0 0 0 0 0 0 0 0 1 0 1 
+estado.S_RT 0 0 0 0 0 0 0 0 0 1 0 0 1 
+estado.S_CAPB 0 0 0 0 0 0 0 0 1 0 0 0 1 
+estado.S_ALU_START 0 0 0 0 0 0 0 1 0 0 0 0 1 
+estado.S_ALU_WAIT 0 0 0 0 0 0 1 0 0 0 0 0 1 
+estado.S_DIV_START 0 0 0 0 0 1 0 0 0 0 0 0 1 
+estado.S_DIV_WAIT 0 0 0 0 1 0 0 0 0 0 0 0 1 
+estado.S_WB 0 0 0 1 0 0 0 0 0 0 0 0 1 
+estado.S_UART_START 0 0 1 0 0 0 0 0 0 0 0 0 1 
+estado.S_UART_WAIT 0 1 0 0 0 0 0 0 0 0 0 0 1 
+estado.S_HALT 1 0 0 0 0 0 0 0 0 0 0 0 1 

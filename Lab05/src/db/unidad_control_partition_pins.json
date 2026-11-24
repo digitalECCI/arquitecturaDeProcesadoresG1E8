@@ -1,0 +1,293 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "pc_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "pc_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "pc_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "pc_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "bank_addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "bank_addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "bank_addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "bank_read_en",
+					"strict" : false
+				},
+				{
+					"name" : "bank_write_en",
+					"strict" : false
+				},
+				{
+					"name" : "wsel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "wsel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "a_load",
+					"strict" : false
+				},
+				{
+					"name" : "b_load",
+					"strict" : false
+				},
+				{
+					"name" : "alu_start",
+					"strict" : false
+				},
+				{
+					"name" : "alu_sel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "alu_sel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "alu_sel[2]",
+					"strict" : false
+				},
+				{
+					"name" : "div_start",
+					"strict" : false
+				},
+				{
+					"name" : "uart_go",
+					"strict" : false
+				},
+				{
+					"name" : "uart_addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[0]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[1]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[2]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[3]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[4]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[5]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[6]",
+					"strict" : false
+				},
+				{
+					"name" : "imm8[7]",
+					"strict" : false
+				},
+				{
+					"name" : "halted",
+					"strict" : false
+				},
+				{
+					"name" : "div0_flag",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[8]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[9]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[10]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[11]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[12]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[13]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[14]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_out[15]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				},
+				{
+					"name" : "avanzar",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[3]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[6]",
+					"strict" : false
+				},
+				{
+					"name" : "div_done",
+					"strict" : false
+				},
+				{
+					"name" : "div_err",
+					"strict" : false
+				},
+				{
+					"name" : "alu_done",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[9]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[4]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[10]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[5]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[8]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[11]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[13]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[14]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[15]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[12]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rom_data[2]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_ocupado",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
